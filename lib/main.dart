@@ -20,6 +20,8 @@ class _MyAppState extends State<MyApp> {
       title: 'Foodak - Food Delivery',
       home: const BottomNavbar(),
       theme: ThemeData(
+        fontFamily: 'Skranji',
+        useMaterial3: false,
         primarySwatch: Colors.deepOrange,
         dividerTheme: DividerThemeData(
           indent: 20,
@@ -31,8 +33,14 @@ class _MyAppState extends State<MyApp> {
           iconColor: Colors.deepOrange,
           textColor: Colors.black87,
         ),
-        // fontFamily: 'Skranji',
-        useMaterial3: false,
+        textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
+        ),
       ),
     );
   }
