@@ -19,7 +19,7 @@ class FoodGridItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -27,19 +27,19 @@ class FoodGridItem extends StatelessWidget {
           builder: (context, constraints) => Column(
             children: [
               Stack(
-                alignment: Alignment.topCenter,
+                alignment: Alignment.topRight,
                 children: [
                   Image.asset(
                     item.image,
                     fit: BoxFit.contain,
-                    height: constraints.maxHeight * 0.55,
-                    width: constraints.maxWidth * 0.55,
+                    height: constraints.maxHeight * 0.65,
+                    width: constraints.maxWidth * 0.65,
                   ),
                   InkWell(
                     onTap: onFavoriteTap,
                     child: Container(
-                      height: constraints.maxHeight * 0.04,
-                      width: constraints.maxWidth * 0.08,
+                      height: constraints.maxHeight * 0.1,
+                      width: constraints.maxWidth * 0.1,
                       color: Colors.grey[100],
                       child: item.favorited
                           ? Icon(
@@ -54,22 +54,19 @@ class FoodGridItem extends StatelessWidget {
                   ),
                 ],
               ),
-              const Spacer(),
+
               Text(
                 item.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: constraints.maxHeight * 0.12,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
                 ),
               ),
-              const SizedBox(height: 4),
               Text(
                 '\$${item.price.toStringAsFixed(2)}',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: constraints.maxHeight * 0.1,
                   fontWeight: FontWeight.w700,
                   color: Theme.of(context).primaryColor,
                 ),

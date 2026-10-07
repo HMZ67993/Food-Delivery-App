@@ -46,53 +46,55 @@ Widget accountClickables(
 class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          SizedBox(height: 20, width: 20),
-          Container(
-            height: 150,
-            width: 150,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(),
-              image: DecorationImage(
-                image: AssetImage("assets/images/profile.png"),
-                fit: BoxFit.fill,
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 20, width: 20),
+            Container(
+              height: 150,
+              width: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/profile.png"),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-          Text(
-            "Hamza Mansour",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              voucherOrderItem(context, name: "Orders", number: 15),
-              voucherOrderItem(context, name: "Vouchers", number: 3),
-            ],
-          ),
-          SizedBox(height: 10),
-          Divider(),
-          accountClickables(
-            context,
-            title: "Past Orders",
-            icon: Icons.shopping_cart,
-          ),
-          Divider(),
-          accountClickables(
-            context,
-            title: "Available Vouchers",
-            icon: Icons.wallet_giftcard_rounded,
-          ),
-          Divider(),
-          accountClickables(
-            context,
-            title: "Hot offers",
-            icon: Icons.whatshot_sharp,
-          ),
-        ],
+            Text(
+              "Hamza Mansour",
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                voucherOrderItem(context, name: "Orders", number: 15),
+                voucherOrderItem(context, name: "Vouchers", number: 3),
+              ],
+            ),
+            SizedBox(height: 10),
+            Divider(),
+            accountClickables(
+              context,
+              title: "Past Orders",
+              icon: Icons.shopping_cart,
+            ),
+            Divider(),
+            accountClickables(
+              context,
+              title: "Available Vouchers",
+              icon: Icons.wallet_giftcard_rounded,
+            ),
+            Divider(),
+            accountClickables(
+              context,
+              title: "Hot offers",
+              icon: Icons.whatshot_sharp,
+            ),
+          ],
+        ),
       ),
     );
   }

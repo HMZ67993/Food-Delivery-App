@@ -23,41 +23,45 @@ class _BottomNavbarState extends State<BottomNavbar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          'Foodak App',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black87,
-        centerTitle: true,
-      ),
-      drawer: const Drawer(
-        child: SafeArea(
-          child: Center(child: Text('Drawer', style: TextStyle(fontSize: 24))),
-        ),
-      ),
-      body: bodyOptions[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 8,
-        backgroundColor: Colors.white,
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.black54,
-        currentIndex: selectedIndex,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+          title: const Text(
+            'Foodak App',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_sharp),
-            label: 'Account',
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black87,
+          centerTitle: true,
+        ),
+        drawer: const Drawer(
+          child: SafeArea(
+            child: Center(
+              child: Text('Drawer', style: TextStyle(fontSize: 24)),
+            ),
           ),
-        ],
+        ),
+        body: bodyOptions[selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          elevation: 8,
+          backgroundColor: Colors.white,
+          selectedItemColor: Theme.of(context).primaryColor,
+          unselectedItemColor: Colors.black54,
+          currentIndex: selectedIndex,
+          onTap: _onItemTapped,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: 'Favorite',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_box_sharp),
+              label: 'Account',
+            ),
+          ],
+        ),
       ),
     );
   }

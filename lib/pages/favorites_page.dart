@@ -36,36 +36,40 @@ class _FavoritesState extends State<Favorites> {
       );
     }
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: size.width * 0.05,
-              vertical: size.height * 0.02,
-            ),
-            child: Text(
-              "Favorite Items",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: LayoutBuilder(
+          builder: (context, constraints) => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: constraints.maxWidth * 0.05,
+                  vertical: constraints.minWidth * 0.05,
+                ),
+                child: Text(
+                  "Favorite Items",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
               ),
-            ),
+              for (int i = 0; i < food.length; i++)
+                if (food[i].favorited)
+                  FavoriteItem(
+                    foodIndex: i,
+                    onFavoriteTap: () {
+                      setState(() {
+                        food[i] = food[i].copyWith(favorited: false);
+                      });
+                    },
+                  ),
+            ],
           ),
-          for (int i = 0; i < food.length; i++)
-            if (food[i].favorited)
-              FavoriteItem(
-                foodIndex: i,
-                onFavoriteTap: () {
-                  setState(() {
-                    food[i] = food[i].copyWith(favorited: false);
-                  });
-                },
-              ),
-        ],
+        ),
       ),
     );
   }
